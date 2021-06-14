@@ -34,6 +34,11 @@ class Company
      */
     private $offers;
 
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $responsable;
+
     public function __construct()
     {
         $this->offers = new ArrayCollection();
@@ -94,6 +99,18 @@ class Company
                 $offer->setOwner(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getResponsable(): ?string
+    {
+        return $this->responsable;
+    }
+
+    public function setResponsable(?string $responsable): self
+    {
+        $this->responsable = $responsable;
 
         return $this;
     }
