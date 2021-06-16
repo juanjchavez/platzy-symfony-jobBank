@@ -39,6 +39,12 @@ class Company
      */
     private $responsable;
 
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $owner;
+
     public function __construct()
     {
         $this->offers = new ArrayCollection();
@@ -111,6 +117,18 @@ class Company
     public function setResponsable(?string $responsable): self
     {
         $this->responsable = $responsable;
+
+        return $this;
+    }
+
+    public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(User $owner): self
+    {
+        $this->owner = $owner;
 
         return $this;
     }

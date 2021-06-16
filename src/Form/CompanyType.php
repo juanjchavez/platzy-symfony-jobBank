@@ -4,9 +4,9 @@ namespace App\Form;
 
 use App\Entity\Company;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CompanyType extends AbstractType
 {
@@ -16,6 +16,7 @@ class CompanyType extends AbstractType
             ->add('name')
             ->add('email')
             ->add('responsable')
+            ->add('owner')
             ->add('save', SubmitType::class, [
                 'label' => 'Guardar',
             ])

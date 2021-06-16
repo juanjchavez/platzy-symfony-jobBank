@@ -80,7 +80,8 @@ class User implements UserInterface
      */
     public function getPassword(): string
     {
-        return $this->password;
+        (is_null($this->password)) ? $pass="" : $pass = $this->password;
+        return $pass;
     }
 
     public function setPassword(string $password): self
@@ -108,5 +109,10 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->username;
     }
 }
