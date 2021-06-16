@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ofertas disponibles
+{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+        <div id="flash-messages">
+            {% for messages in app.flashes %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+            {% endfor %}
+        </div>
+        <h1>Ofertas disponibles</h1>
+
+        {% if offers|length > 0 %}
+            <ul>
+                {% for offer in offers %}
+                    <li>{{ offer.title  }} - <a href="{{ url('offer_apply', {id: offer.id}) }}">Apply</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No hay ofertas aún</p>
+        {% endif %}
+    </div>
+{% endblock %}
